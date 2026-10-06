@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>What Moves Us — Motivation Theories</title>
+  <meta name="description" content="An interactive infographic exploring Maslow, expectancy-value theory, and self-efficacy.">
+
+  <style>
+    :root {
+      --ink: #233a36;
+      --paper: #f7f5ed;
+      --green: #c8ddbd;
+      --orange: #eec5a5;
+      --purple: #d5ccef;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #f7f5edf5;
+      border-bottom: 1px solid #233a3620;
+      z-index: 5;
+    }
+
+    nav {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      gap: 20px;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    nav div { display: flex; gap: 25px; }
+
+    .brand { font-weight: 800; font-size: 17px; }
+
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: 1.07;
+    }
+
+    h1 {
+      font-size: clamp(58px, 8vw, 108px);
+      max-width: 750px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 5vw, 65px);
+      margin-bottom: 20px;
+    }
+
+    h3 { font-size: 20px; line-height: 1.3; }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 85px 0 70px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero p { max-width: 570px; font-size: 18px; }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--ink);
+      border-radius: 30px;
+      padding: 12px 22px;
+      color: inherit;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .orbit {
+      height: 330px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .circle {
+      width: 185px;
+      height: 185px;
+      border: 1px solid #233a3650;
+      border-radius: 50%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia;
+      font-size: 30px;
+    }
+
+    .circle:nth-child(1) {
+      background: var(--green);
+      top: 0;
+      left: 20%;
+    }
+
+    .circle:nth-child(2) {
+      background: var(--orange);
+      bottom: 15px;
+      left: 0;
+    }
+
+    .circle:nth-child(3) {
+      background: var(--purple);
+      bottom: 15px;
+      right: 0;
+    }
+
+    .orbit span {
+      position: absolute;
+      bottom: -25px;
+      font-size: 12px;
+    }
+
+    .intro-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #233a3630;
+      border-bottom: 1px solid #233a3630;
+      padding: 25px 0;
+      gap: 24px;
+    }
+
+    .intro-strip b {
+      display: block;
+      font-family: Georgia;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .intro-strip span { font-size: 13px; }
+
+    .section {
+      padding: 85px 0;
+      border-bottom: 1px solid #233a3630;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: start;
+    }
+
+    .byline { font-size: 14px; opacity: .8; }
+    .ideas { padding-left: 22px; }
+    .ideas li { padding: 8px 0; }
+    .cite { font-size: 12px; color: #526660; }
+
+    .panel {
+      padding: 30px;
+      border-radius: 18px;
+      background: #eeeee4;
+    }
+
+    .pyramid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .level {
+      border: 0;
+      color: var(--ink);
+      padding: 15px 8px;
+      font: 600 13px system-ui;
+      cursor: pointer;
+      border-radius: 5px;
+      width: var(--w);
+      background: var(--c);
+      min-height: 48px;
+    }
+
+    .level:hover,
+    .level[aria-pressed="true"] {
+      outline: 2px solid var(--ink);
+      outline-offset: 1px;
+    }
+
+    .detail { margin-top: 25px; min-height: 95px; }
+    .detail strong { display: block; font-size: 19px; }
+    .mini { font-size: 12px; opacity: .75; }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .value-grid article {
+      padding: 18px;
+      background: #f7f5ed;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .value-grid b { display: block; }
+
+    .interactive {
+      background: var(--orange);
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    .interactive label {
+      display: block;
+      font-size: 14px;
+      margin: 15px 0;
+    }
+
+    input[type="range"] {
+      display: block;
+      width: 100%;
+      accent-color: var(--ink);
+      margin-top: 12px;
+    }
+
+    output {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .sources {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .source {
+      background: var(--purple);
+      border-radius: 12px;
+      padding: 22px;
+      font-size: 14px;
+    }
+
+    .source span {
+      display: block;
+      font-size: 32px;
+      font-family: Georgia;
+      opacity: .55;
+    }
+
+    .source b { display: block; margin: 8px 0; }
+
+    .example {
+      margin-top: 28px;
+      border-left: 3px solid var(--ink);
+      padding: 8px 0 8px 20px;
+      font-size: 14px;
+    }
+
+    .compare { overflow-x: auto; margin-top: 32px; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 680px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 18px;
+      border-bottom: 1px solid #233a3620;
+      vertical-align: top;
+    }
+
+    th { background: var(--ink); color: var(--paper); }
+    td:first-child { font-weight: 600; }
+
+    .common {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .common b { display: block; }
+
+    .lens {
+      margin-top: 45px;
+      padding: 32px;
+      border-radius: 16px;
+      background: #e8ecdf;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .tabs button {
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      border-radius: 30px;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .tabs button[aria-pressed="true"] {
+      background: var(--ink);
+      color: white;
+    }
+
+    #lens-text { min-height: 70px; max-width: 850px; }
+    .references { font-size: 14px; }
+
+    .references p {
+      padding-left: 28px;
+      text-indent: -28px;
+      margin-bottom: 22px;
+      overflow-wrap: anywhere;
+    }
+
+    .references a { color: inherit; }
+
+    footer {
+      padding: 30px 0 45px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #7659a5;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 750px) {
+      .hero, .split { grid-template-columns: 1fr; gap: 35px; }
+      .hero { padding-top: 50px; }
+      .orbit { width: 320px; margin: auto; }
+      .intro-strip, .common { grid-template-columns: 1fr; }
+      .section { padding: 55px 0; }
+      nav { flex-wrap: wrap; }
+      nav div { gap: 16px; flex-wrap: wrap; }
+      .panel { padding: 20px; }
+    }
+
+    @media print {
+      header, .button, .interactive { display: none; }
+      .section { break-inside: avoid; padding: 30px 0; }
+      .hero { padding: 25px 0; }
+      .tabs { display: none; }
+      body { font-size: 12px; }
+      h1 { font-size: 50px; }
+      h2 { font-size: 35px; }
+      main { padding: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav aria-label="Sections">
+      <a class="brand" href="#home">what moves us.</a>
+      <div>
+        <a href="#maslow">01 Needs</a>
+        <a href="#expectancy">02 Value</a>
+        <a href="#efficacy">03 Belief</a>
+        <a href="#compare">04 Compare</a>
+        <a href="#references">Sources ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Motivation • An interactive infographic</div>
+        <h1>What makes us<br><em>keep going?</em></h1>
+        <p>Three theories. Three ways to understand why we begin, what we choose, and how we persist.</p>
+        <p class="byline">Created by Hibah · Introduction to Motivation</p>
+        <a class="button" href="#maslow">Explore the theories ↓</a>
+      </div>
+
+      <div class="orbit" aria-label="Three intersecting perspectives: needs, value, and belief">
+        <div class="circle">Needs</div>
+        <div class="circle">Value</div>
+        <div class="circle">Belief</div>
+        <span>Different lenses on the same human experience.</span>
+      </div>
+    </section>
+
+    <div class="intro-strip">
+      <div>
+        <b>What do I need?</b>
+        <span>Maslow’s Hierarchy of Needs</span>
+      </div>
+      <div>
+        <b>Is this worth doing?</b>
+        <span>Expectancy-Value Theory</span>
+      </div>
+      <div>
+        <b>Can I do this?</b>
+        <span>Self-Efficacy / Social Cognitive Theory</span>
+      </div>
+    </div>
+
+    <!-- PART I: MASLOW -->
+    <section class="section" id="maslow">
+      <div class="split">
+        <div>
+          <div class="eyebrow">Part I · Needs</div>
+          <h2>Maslow’s Hierarchy<br>of Needs</h2>
+          <p class="byline">Key theorist: Abraham H. Maslow</p>
+          <p>Motivation reflects needs ranging from basic survival to developing one’s potential.</p>
+
+          <ol class="ideas">
+            <li>
+              <b>Five major needs:</b> physiological, safety, love and belonging, esteem, and self-actualization.
+              <br>
+              <small><i>Example:</i> A student seeks meals, safe housing, friendships, recognition, and opportunities to grow.</small>
+            </li>
+            <li>
+              <b>Relative priority:</b> unmet basic needs tend to command attention; their satisfaction can make room for higher needs.
+              <br>
+              <small><i>Example:</i> After eating and resting, a student can give more attention to a creative project.</small>
+            </li>
+            <li>
+              <b>Flexible progression:</b> needs can overlap, and exceptions occur. A lower need does not require complete satisfaction before a higher need matters.
+              <br>
+              <small><i>Example:</i> A student facing financial uncertainty can still seek friendship and personal achievement.</small>
+            </li>
+          </ol>
+
+          <p class="cite">Source: Maslow (1943).</p>
+
+          <div class="example">
+            <b>Student example:</b> A hungry, exhausted student may prioritize food and rest before focusing on an ambitious project.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="eyebrow">Explore the five levels · Select a need</div>
+
+          <div class="pyramid" style="margin-top:25px">
+            <button class="level" style="--w:58%;--c:#abc8a1"
+              data-need="4" aria-pressed="false">Self-actualization</button>
+            <button class="level" style="--w:68%;--c:#bdd3b3"
+              data-need="3" aria-pressed="false">Esteem</button>
+            <button class="level" style="--w:78%;--c:#cfddbe"
+              data-need="2" aria-pressed="false">Love & belonging</button>
+            <button class="level" style="--w:88%;--c:#dee4ca"
+              data-need="1" aria-pressed="false">Safety</button>
+            <button class="level" style="--w:100%;--c:#ecebd8"
+              data-need="0" aria-pressed="true">Physiological</button>
+          </div>
+
+          <div class="detail" id="need-detail" aria-live="polite">
+            <strong>Physiological</strong>
+            Food, water, sleep, and other basic bodily needs.
+          </div>
+
+          <p class="mini">Simplified visual of relative priority, not a rigid staircase.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART II: EXPECTANCY-VALUE -->
+    <section class="section" id="expectancy">
+      <div class="split">
+        <div>
+          <div class="eyebrow">Part II · Value</div>
+          <h2>Expectancy-Value<br>Theory</h2>
+          <p class="byline">
+            Key theorists: Jacquelynne S. Eccles & Allan Wigfield<br>
+            Achievement motivation / situated expectancy-value approach
+          </p>
+
+          <p>Choices depend on expectations of success and the subjective value of a task.</p>
+
+          <ol class="ideas">
+            <li>
+              <b>Expectancy:</b> “How likely am I to succeed?” Beliefs about future success influence engagement and performance.
+              <br>
+              <small><i>Example:</i> A student who expects to succeed in statistics is more willing to enroll.</small>
+            </li>
+            <li>
+              <b>Subjective task value:</b> enjoyment, personal importance, usefulness, and perceived cost shape a task’s appeal.
+              <br>
+              <small><i>Example:</i> A student enjoys accounting (intrinsic), sees competence as part of their identity (attainment), values career preparation (utility), and weighs study time (cost).</small>
+            </li>
+            <li>
+              <b>Situated motivation:</b> experiences, social messages, and cultural context help shape expectancies and values, influencing choices and persistence.
+              <br>
+              <small><i>Example:</i> Encouragement from a mentor and positive class experiences can change which courses a student believes are possible and worthwhile.</small>
+            </li>
+          </ol>
+
+          <p class="cite">Source: Eccles and Wigfield (2020).</p>
+
+          <div class="example">
+            <b>Student example:</b> A student may choose a difficult course because it supports a career goal, while weighing the time and stress it requires.
+          </div>
+        </div>
+
+        <div>
+          <div class="value-grid">
+            <article>
+              <b>Intrinsic value</b>
+              Enjoyment or interest.
+            </article>
+            <article>
+              <b>Attainment value</b>
+              Importance to identity.
+            </article>
+            <article>
+              <b>Utility value</b>
+              Usefulness for goals.
+            </article>
+            <article>
+              <b>Perceived cost</b>
+              Effort, stress, or lost alternatives.
+            </article>
+          </div>
+
+          <div class="interactive">
+            <div class="eyebrow">Try a thought experiment</div>
+
+            <label for="expect">
+              Expectation of success
+              <input id="expect" type="range" min="1" max="3" value="2">
+            </label>
+
+            <label for="value">
+              Value of the task
+              <input id="value" type="range" min="1" max="3" value="2">
+            </label>
+
+            <output id="ev-result" aria-live="polite"></output>
+
+            <p class="mini">
+              Conceptual illustration; not a validated score or predictive equation.
+              Costs and context also matter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART III: SELF-EFFICACY -->
+    <section class="section" id="efficacy">
+      <div class="split">
+        <div>
+          <div class="eyebrow">Part III · Belief</div>
+          <h2>Self-Efficacy</h2>
+          <p class="byline">
+            Within Social Cognitive Theory · Key theorist: Albert Bandura
+          </p>
+
+          <p>Self-efficacy is belief in one’s capability to carry out the actions required for a particular task.</p>
+
+          <ol class="ideas">
+            <li>
+              <b>Task-specific capability:</b> believing you can perform an action differs from expecting that action to produce a desired outcome.
+              <br>
+              <small><i>Example:</i> “I can solve these problems” is an efficacy belief; “solving them will improve my grade” is an outcome expectation.</small>
+            </li>
+            <li>
+              <b>Effort and persistence:</b> efficacy beliefs influence whether people attempt a challenge and how long they persist through obstacles.
+              <br>
+              <small><i>Example:</i> A student who believes they can learn a technique may try another strategy after a failed attempt.</small>
+            </li>
+            <li>
+              <b>Four information sources:</b> successes, observing others, credible encouragement, and interpretations of bodily or emotional states shape efficacy beliefs.
+              <br>
+              <small><i>Example:</i> A student completes a practice problem, watches a peer demonstrate one, receives specific encouragement, and learns to interpret nerves as manageable.</small>
+            </li>
+          </ol>
+
+          <p class="cite">Source: Bandura (1977).</p>
+
+          <div class="example">
+            <b>Student example:</b> Successfully solving increasingly difficult practice problems can strengthen a student’s belief that they can handle similar exam tasks.
+          </div>
+        </div>
+
+        <div>
+          <div class="eyebrow" style="margin-bottom:20px">
+            How capability beliefs develop
+          </div>
+
+          <div class="sources">
+            <div class="source">
+              <span>01</span>
+              <b>Mastery experiences</b>
+              “I have done this successfully.”
+            </div>
+            <div class="source">
+              <span>02</span>
+              <b>Vicarious experiences</b>
+              “Someone like me can do it.”
+            </div>
+            <div class="source">
+              <span>03</span>
+              <b>Verbal persuasion</b>
+              “Credible feedback says I can improve.”
+            </div>
+            <div class="source">
+              <span>04</span>
+              <b>Physiological & emotional states</b>
+              “How am I interpreting my stress?”
+            </div>
+          </div>
+
+          <p class="mini" style="margin-top:20px">
+            Confidence can support action; success also requires skills and suitable conditions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART IV: COMPARISON -->
+    <section class="section" id="compare">
+      <div class="eyebrow">Part IV · Comparing theories</div>
+      <h2>One challenge.<br>Three perspectives.</h2>
+
+      <p>These theories offer complementary explanations, while emphasizing different motivational mechanisms.</p>
+
+      <div class="compare">
+        <table>
+          <thead>
+            <tr>
+              <th>Lens</th>
+              <th>Maslow</th>
+              <th>Expectancy-Value</th>
+              <th>Self-Efficacy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Main focus</td>
+              <td>Needs and their relative priority</td>
+              <td>Expected success and task value</td>
+              <td>Belief in task-specific capability</td>
+            </tr>
+            <tr>
+              <td>Central question</td>
+              <td>Which needs are motivating me?</td>
+              <td>Can I succeed, and is it worth it?</td>
+              <td>Can I carry out the required actions?</td>
+            </tr>
+            <tr>
+              <td>Structure</td>
+              <td>A flexible hierarchy of needs</td>
+              <td>Expectancies and values shaped by context</td>
+              <td>Efficacy beliefs shaped by four sources</td>
+            </tr>
+            <tr>
+              <td>Illustrative support</td>
+              <td>Provide rest, safety, and belonging</td>
+              <td>Connect tasks to goals and address costs</td>
+              <td>Build success through guided practice</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="common">
+        <div>
+          <b>Internal experience matters.</b>
+          Needs, values, and capability beliefs each help explain behavior.
+        </div>
+        <div>
+          <b>Context matters.</b>
+          Support and experiences can affect needs, task appraisals, or efficacy beliefs.
+        </div>
+        <div>
+          <b>Motivation can change.</b>
+          Satisfaction, changing priorities, and learning experiences can shift what drives action.
+        </div>
+      </div>
+
+      <p class="cite" style="margin-top:20px">
+        Comparison and practical supports are a synthesis of Maslow (1943),
+        Eccles and Wigfield (2020), and Bandura (1977).
+        Expectancy and self-efficacy overlap as ability beliefs, but
+        expectancy-value theory also explicitly considers task value and cost.
+      </p>
+
+      <div class="lens">
+        <div class="eyebrow">Apply all three · Illustrative scenario</div>
+        <h3 style="margin-top:10px">
+          A student keeps putting off exam preparation.
+        </h3>
+        <p>Select a lens to explore a possible explanation and response.</p>
+
+        <div class="tabs" aria-label="Theory perspectives">
+          <button data-lens="0" aria-pressed="true">Needs</button>
+          <button data-lens="1" aria-pressed="false">Expectancy & value</button>
+          <button data-lens="2" aria-pressed="false">Self-efficacy</button>
+        </div>
+
+        <p id="lens-text" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- APA REFERENCES -->
+    <section class="section references" id="references">
+      <div class="eyebrow">APA 7 · References</div>
+      <h2>Grounded in research.</h2>
+
+      <p>
+        Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change.
+        <i>Psychological Review, 84</i>(2), 191–215.
+        <a href="https://doi.org/10.1037/0033-295X.84.2.191">
+          https://doi.org/10.1037/0033-295X.84.2.191
+        </a>
+      </p>
+
+      <p>
+        Eccles, J. S., & Wigfield, A. (2020).
+        From expectancy-value theory to situated expectancy-value theory:
+        A developmental, social cognitive, and sociocultural perspective on motivation.
+        <i>Contemporary Educational Psychology, 61</i>, Article 101859.
+        <a href="https://doi.org/10.1016/j.cedpsych.2020.101859">
+          https://doi.org/10.1016/j.cedpsych.2020.101859
+        </a>
+      </p>
+
+      <p>
+        Maslow, A. H. (1943). A theory of human motivation.
+        <i>Psychological Review, 50</i>(4), 370–396.
+        <a href="https://doi.org/10.1037/h0054346">
+          https://doi.org/10.1037/h0054346
+        </a>
+      </p>
+    </section>
+
+    <footer>
+      <span>what moves us. · Hibah</span>
+      <span>Infographic & Multimedia Project</span>
+    </footer>
+  </main>
+
+  <script>
+    // Interactive needs hierarchy
+    const needs = [
+      [
+        "Physiological",
+        "Food, water, sleep, and other basic bodily needs."
+      ],
+      [
+        "Safety",
+        "Security, stability, and protection from threats."
+      ],
+      [
+        "Love & belonging",
+        "Connection, affection, and membership in a group."
+      ],
+      [
+        "Esteem",
+        "Self-respect, competence, achievement, and recognition."
+      ],
+      [
+        "Self-actualization",
+        "Developing one’s potential and becoming what one is capable of becoming."
+      ]
+    ];
+
+    document.querySelectorAll("[data-need]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-need]").forEach(item => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+
+        const selectedNeed = needs[Number(button.dataset.need)];
+        const detail = document.getElementById("need-detail");
+
+        detail.replaceChildren();
+
+        const heading = document.createElement("strong");
+        heading.textContent = selectedNeed[0];
+
+        detail.append(
+          heading,
+          document.createTextNode(selectedNeed[1])
+        );
+      });
+    });
+
+    // Expectancy-value thought experiment
+    function updateExpectancyValue() {
+      const expectancy = Number(document.getElementById("expect").value);
+      const value = Number(document.getElementById("value").value);
+      let text;
+
+      if (expectancy === 1) {
+        text = "Low expectancy may discourage trying, even when the task matters.";
+      } else if (value === 1) {
+        text = "Believing you can succeed may not be enough when the task has little value.";
+      } else if (expectancy === 3 && value === 3) {
+        text = "High expectancy and high value can support engagement; costs still matter.";
+      } else {
+        text = "Some confidence and value are present. Strengthening either may support engagement.";
+      }
+
+      document.getElementById("ev-result").textContent = text;
+    }
+
+    document.querySelectorAll('input[type="range"]').forEach(input => {
+      input.addEventListener("input", updateExpectancyValue);
+    });
+
+    updateExpectancyValue();
+
+    // Comparison scenario
+    const lenses = [
+      "Maslow: The student may be exhausted or feel unsupported. Addressing rest, stability, and belonging could make room for studying.",
+      "Expectancy-value: The student may doubt success or see studying as too costly. Explain its usefulness, develop a realistic plan, and reduce competing demands.",
+      "Self-efficacy: The student may doubt the ability to solve the problems. Begin with manageable practice tasks, model strategies, and offer specific feedback."
+    ];
+
+    document.querySelectorAll("[data-lens]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-lens]").forEach(item => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+
+        document.getElementById("lens-text").textContent =
+          lenses[Number(button.dataset.lens)];
+      });
+    });
+
+    document.getElementById("lens-text").textContent = lenses[0];
+  </script>
+</body>
+</html>
